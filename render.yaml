@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: servicedeskai-backend
+    env: docker
+    plan: free
+    region: oregon
+    branch: main
+    dockerfilePath: service_desk_ai_backend/Dockerfile
+    healthCheckPath: "/"
+    envVars:
+      - key: SUPABASE_DB_URL
+        sync: false
+      - key: JWT_SECRET_KEY
+        generateValue: true
+      - key: ACCESS_TOKEN_EXPIRE_MINUTES
+        value: "15"
+      - key: REFRESH_TOKEN_EXPIRE_DAYS
+        value: "7"
+      - key: EMAIL_API_KEY
+        sync: false
